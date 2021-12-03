@@ -19,7 +19,6 @@
 <h4>Основной стек технологий:</h4>
 <ul>
 	<li>HTML, JavaScript, Flask</li>
-	<li>PHP 7, MySQL.</li>
 	<li>Git</li>
 	<li>Python, Pytorch, EO learn.</li>
   
