@@ -69,6 +69,7 @@ python Segmentation.py images result models/best_model_LinkNet34.pth
 python app.py
 ~~~
 Затем надо будет вставить путь к папке которую хотим проанализировать(например 2019-01), после будет доступна информация
+
 РАЗРАБОТЧИКИ
 
-<h4>Курбанов Ринат DS https://t.me/@demontego </h4>
+<h4>Курбанов Ринат DS https://t.me/@demontego</h4>
