@@ -58,7 +58,7 @@ class FolderProcessor:
                 continue
             else:
                 tss = sorted([x['timestamp'] for x in eos], reverse=True)
-                eos = sorted(eos, key = lambda x: x['prob'])
+                eos = sorted(eos, key = lambda x: x['prob'], reverse=True)
                 for i in range(len(eos)-1, -1, -1):
                     eos[i]['timestamp'] = tss[0].strftime('%d.%m.%Y')
                 pack_data = {'name': pack, 'meanlat': np.mean([x['lat'] for x in eos]), 'meanlon': np.mean([x['lon'] for x in eos]),'timestamp':tss[0].strftime('%d.%m.%Y'), 'full_square': full_square,  'data': eos}

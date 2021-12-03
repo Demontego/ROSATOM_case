@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<div style="margin-bottom: 40px;" class="card-1-list">
+    <h2>Выберите дату разлива</h2>
+    <div class="d-flex">
+      {% for i in date %}
+          <a class="button" href="/card/{{i['timestamp']}}">Date: {{i['timestamp']}}</a>
+      {% endfor %}
+    </div>
+</div>
+
+<form method="post" style="max-width: 500px;">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Дата начала:</label>
+    <input type="date" name="date_1" class="form-control" id="exampleInputEmail1">
+    <div id="emailHelp" class="form-text">Указывайте дату корректно</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Дата конца:</label>
+    <input type="date" name="date_2" class="form-control" id="exampleInputPassword1">
+    <input type="hidden" name="form" value="date">
+  </div>
+  <button type="submit" class="btn btn-primary">Запросить отчёт</button>
+</form>
+
+<form method="post" style="margin-top: 100px; max-width: 500px;">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Полный путь к папке:</label>
+    <input type="text" name="path" class="form-control" id="exampleInputEmail1">
+    <input type="hidden" name="form" value="path">
+    <div id="emailHelp" class="form-text">Указывайте путь корректно</div>
+  </div>
+  <button type="submit" class="btn btn-primary">Отправить</button>
+</form>
+
+{% endblock %}

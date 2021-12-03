@@ -7,43 +7,46 @@ import json
 app = Flask(__name__)
 
 # заглушка
-dates = {"19.03.2005" : [["photo.jpg", "name-1", "19.03.2005", "72, 62", "34"], ["photo.jpg", "name-1", "19.03.2005", "72, 62", "34"], ["photo.jpg", "name-1", "19.03.2005", "72, 62", "34"]],
-            "12.10.2020" : [["photo.jpg", "name-1", "19.03.2005", "72, 62", "34"], ["photo.jpg", "name-1", "19.03.2005", "72, 62", "34"], ["photo.jpg", "name-1", "19.03.2005", "72, 62", "34"]]}
+dates = "null"
 
 
 @app.route('/', methods=['POST', 'GET'])
 @app.route('/card')
 def home():
     if request.method == 'POST':
-        # дата от какого числа отчёт
+        if request.form.get('form') == 'path':
+            path = request.form.get('path')
+            predictor = joblib.load('models/lg400.jbl')
+            output = 'data/data.json' #куда пишуться данные
+            fp = FolderProcessor(predictor, THRESH)
+            datas = fp.process_dir(path)  #путь к папке
+            with open(output, 'w') as fout:  
+                json.dump(datas, fout)
+            return redirect('/')
         data_1 = request.form.get('date_1')
         data_2 = request.form.get('date_2')
-        
-        predictor = joblib.load('models/lg400.jbl')
-        output = 'result.json' #куда пишуться данные
-        fp = FolderProcessor(predictor, THRESH)
-        datas = fp.process_dir(path)  #путь к папке
-        with open(output, 'w') as fout:  
-            json.dump(datas, fout)
-        
-        
         return str(data_1) + " " + str(data_2)
-    return render_template('home.html', date=dates)
+    return render_template('home.html', date=data())
 
 
-@app.route('/card/<name>')
-def date(name):
-    return render_template('cards.html', res=dates[name])
+@app.route('/card/<timestamp>')
+def date(timestamp):
+    return render_template('cards.html', timestamp = timestamp, data=data())
 
 
 # вкладка для полного отображения
-# @app.route('/card/<name>/map')
-# def map(name):
-#     return render_template('map_date.html', res=dates)
+@app.route('/card/<name>/map')
+def map(name):
+    return render_template('map_date.html', name=name, data=data())
 
 
 def mes(message):
     return render_template('error.html', message=message)
+
+def data():
+    with open('data/data.json', 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data
 
 
 if __name__ == '__main__':

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<!-- Вывод всех карточек по дате -->
+<div style="margin: 20px auto;" class="card-1-list">
+    <div style="grid-gap: 20px;" class="card-1 d-flex">
+        {% for i in data %}
+            {% if i['timestamp'] == timestamp %}
+                <div class="block">
+                    <div class="between">
+                        <div>
+                            <p><b>Name:</b> {{i['name']}}</p>
+                            <p>Общая <b>m<sup>2</sup>:</b>{{i["full_square"] * 100}}</p>
+                        </div>
+                        <div>
+                            <p><b>Долгота : </b>{{"{0:.5f}".format(i["meanlon"])}}</p>
+                            <p><b>Широта : </b>{{"{0:.5f}".format(i["meanlat"])}}</p>
+                        </div>
+                    </div>
+                    <a class="button" href="/card/{{i['name']}}/map" target="_blank_">Подробнее...</a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
