@@ -24,7 +24,7 @@
   
  </ul>
 <h4>Демо</h4>
-<p>Тут ссылка на гугл диск </p>
+<p>https://drive.google.com/file/d/16F1nfxeDYo4DFPAcWHLPorQjXgJC98-g/view?usp=sharing </p>
 <p>Пока в формате видео</b></p>
 
 
