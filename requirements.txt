@@ -1,0 +1,13 @@
+albumentations==0.5.2
+eo_learn_visualization==0.10.0
+Flask==2.0.2
+joblib==1.1.0
+lightgbm==3.3.1
+matplotlib==3.5.0
+numpy==1.20.3
+opencv_python_headless==4.5.1.48
+scikit_image==0.18.3
+segmentation_models_pytorch==0.2.1
+skimage==0.0
+torch==1.10.0
+tqdm==4.62.3
