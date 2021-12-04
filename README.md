@@ -73,3 +73,4 @@ python app.py
 РАЗРАБОТЧИКИ
 
 <h4>Курбанов Ринат DS https://t.me/@demontego</h4>
+<h4>Елисей Питанов DS </h4>
